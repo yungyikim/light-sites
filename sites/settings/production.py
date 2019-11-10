@@ -12,9 +12,7 @@ SECRET_KEY = SETTINGS['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    SETTINGS['ALLOWED_HOSTS']
-]
+ALLOWED_HOSTS = SETTINGS['ALLOWED_HOSTS']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
