@@ -7,7 +7,7 @@ class Article(models.Model):
         primary_key=True
     )
     subject = models.CharField(
-        max_length=70,
+        max_length=255,
         null=False,
         help_text='게시물 제목'
     )
