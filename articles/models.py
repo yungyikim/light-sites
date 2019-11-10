@@ -7,9 +7,12 @@ class Article(models.Model):
         primary_key=True
     )
     subject = models.CharField(
-        max_length=128,
+        max_length=70,
         null=False,
         help_text='게시물 제목'
+    )
+    description = models.TextField(
+        null=True,
     )
     content = models.TextField(
         null=True,
