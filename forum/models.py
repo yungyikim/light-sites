@@ -18,6 +18,11 @@ class Article(models.Model):
         null=True,
         help_text='HTML형태의 게시물 내용'
     )
+    thumbnail = models.CharField(
+        max_length=255,
+        null=True,
+        help_text='썸네일 이미지 URL'
+    )
     create_date = models.DateTimeField(
         auto_now_add=False,
         db_index=True
