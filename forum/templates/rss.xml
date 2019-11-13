@@ -2,15 +2,15 @@
 <rss version="2.0">
 <channel>
     <title>LetsGarlic</title>
-    <link>https://{{ request.get_host }}/</link>
+    <link>{{ request.scheme }}://{{ request.META.HTTP_HOST }}</link>
     <description>good restaurant and best restaurant and favorite restaurant, hot place and hot spot</description>
     <pubDate>2019-01-07T05:25:31.836167+00:00</pubDate>
     {% for article in articles %}
     <item>
         <title>{{ article.subject }}</title>
-        <link>https://{{ request.get_host }}{% url 'forum:detail' article.id %}</link>
+        <link>{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'forum:detail' article.id %}</link>
         <description>{{ article.description }}</description>
-        <pubDate>{{ article.create_date }}</pubDate>
+        <pubDate>{{ article.create_date | date:'c' }}</pubDate>
     </item>
     {% endfor %}
 </channel>

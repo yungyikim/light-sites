@@ -1,19 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from forum import models
 
 def sitemap(request):
+    print ('rss')
     articles = models.Article.objects.order_by('-id')[:500]
     context = {
         'articles': articles,
     }
-    return render(request, 'list.html', context)
+    response = render(request, 'sitemap.xml', context)
+    response['Content-Type'] = 'application/xml;'
+    return response
 
 def rss(request):
-    articles = models.Article.objects.order_by('-id')[:500]
+    print ('rss')
+    articles = models.Article.objects.order_by('-id')[:100]
     context = {
         'articles': articles,
     }
-    return render(request, 'list.html', context)
+    response = render(request, 'rss.xml', context)
+    response['Content-Type'] = 'application/xml;'
+    return response
 
 def list(request):
     articles = models.Article.objects.order_by('-id')[:10]
