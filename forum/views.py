@@ -2,7 +2,6 @@ from django.shortcuts import render, render_to_response
 from forum import models
 
 def sitemap(request):
-    print ('rss')
     articles = models.Article.objects.order_by('-id')[:500]
     context = {
         'articles': articles,
@@ -12,7 +11,6 @@ def sitemap(request):
     return response
 
 def rss(request):
-    print ('rss')
     articles = models.Article.objects.order_by('-id')[:100]
     context = {
         'articles': articles,
@@ -24,6 +22,8 @@ def rss(request):
 def list(request):
     articles = models.Article.objects.order_by('-id')[:10]
     context = {
+        'title': 'LetsGarlic - Hot place, Hot spot',
+        'description': 'good restaurant and best restaurant and favorite restaurant, hot place and hot spot',
         'articles': articles,
     }
     return render(request, 'list.html', context)
@@ -40,6 +40,8 @@ def detail(request, pk):
         .order_by('id')[:2]
 
     context = {
+        'title': article.subject,
+        'description': article.description,
         'article': article,
         'prev_articles': prev_articles,
         'next_articles': next_articles
