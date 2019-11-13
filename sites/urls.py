@@ -18,8 +18,8 @@ from django.urls import path, include
 from forum import views
 
 urlpatterns = [
-    path(r'^sitemap\.xml$', views.sitemap, name="sitemap_xml"),
-    path(r'^rss$', views.rss, name="rss"),
+    path(r'sitemap\.xml$', views.sitemap, name="sitemap_xml"),
+    path(r'rss$', views.rss, name="rss"),
     path('admin/', admin.site.urls),
     path('forum/', include('forum.urls')),
     path(r'', views.list, name='home'),
