@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% block styles %}
+  h2 { color: rgba(0, 0, 0, 0.84); }
+  p { line-height: 1.6; color: rgba(0, 0, 0, 0.54); font-weight: 500; }
+  img { max-width: 100%; }
+  .other { margin: 25px 0; }
+{% endblock %}
+
+{% block content %}
+  <h1>{{ article.subject }}</h1>
+  <p><span>{{ article.create_date | date:'F Y' }}</span></p>
+  {{ article.content | safe }}
+
+  <div class="other">
+    {% for prev_article in prev_articles %}
+      <div>
+        <p><a href="{% url 'forum:detail' prev_article.id %}">{{ prev_article.subject }}</a></p>
+      </div>
+    {% endfor %}
+    {% for next_article in next_articles %}
+      <div>
+        <p><a href="{% url 'forum:detail' next_article.id %}">{{ next_article.subject }}</a></p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

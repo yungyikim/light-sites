@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block styles %}
+  .article { margin: 25px 0; }
+  h3 { margin: 10px 0; color: rgba(0, 0, 0, 0.84); }
+  h3 a { color: rgba(0, 0, 0, 0.84); }
+  p { margin: 10px 0; line-height: 1.6; color: rgba(0, 0, 0, 0.54); font-weight: 500; }
+  img { max-width: 100%; }
+{% endblock %}
+
+{% block content %}
+  {% for article in articles %}
+    <div class="article">
+      <h3><a href="{% url 'forum:detail' article.id %}">{{ article.subject }}</a></h3>
+      <p>{{ article.description }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI Emperor service
+After=syslog.target
+
+[Service]
+ExecStart=/bin/bash -c 'source /home/ubuntu/crawler-friendly-sites/venv/bin/activate; /usr/bin/uwsgi --ini /home/ubuntu/crawler-friendly-sites/conf/uwsgi.ini'
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+

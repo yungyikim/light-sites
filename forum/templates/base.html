@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ article.subject }}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="{{ article.description }}">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ article.subject }}">
+    <meta property="og:description" content="{{ article.description }}">
+    <meta property="og:image" content="{{ article.thumbnail }}">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ request.path }}">
+    <meta name="twitter:card" content="{{ article.description }}">
+    <meta name="twitter:title" content="{{ article.subject }}">
+    <meta name="twitter:description" content="{{ article.description }}">
+    <meta name="twitter:image" content="{{ article.thumbnail }}">
+    <link href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ request.path }}" rel="canonical">
+    <style>
+      {% block styles %}{% endblock %}
+
+      @media only screen and (min-width: 720px) {
+        container { display: block; max-width: 720px; }
+      }
+    </style>
+  </head>
+  <body>
+    <container>
+      {% block content %}{% endblock %}
+    </container>
+  </body>
+</html>
