@@ -20,7 +20,7 @@ def rss(request):
     return response
 
 def list(request):
-    articles = models.Article.objects.order_by('-id')[:10]
+    articles = models.Article.objects.order_by('-id')[:20]
     context = {
         'title': 'LetsGarlic - Hot place, Hot spot',
         'description': 'good restaurant and best restaurant and favorite restaurant, hot place and hot spot',
