@@ -1,9 +1,22 @@
 from django.shortcuts import render
 from forum import models
 
+def sitemap(request):
+    articles = models.Article.objects.order_by('-id')[:500]
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'list.html', context)
+
+def rss(request):
+    articles = models.Article.objects.order_by('-id')[:500]
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'list.html', context)
+
 def list(request):
     articles = models.Article.objects.order_by('-id')[:10]
-    print (articles)
     context = {
         'articles': articles,
     }
@@ -11,7 +24,6 @@ def list(request):
 
 def detail(request, pk):
     article = models.Article.objects.get(pk=pk)
-    print (article.subject)
 
     prev_articles = models.Article.objects \
         .filter(id__lt=article.id) \
