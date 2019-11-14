@@ -21,6 +21,11 @@ def rss(request):
     response['Content-Type'] = 'application/xml;'
     return response
 
+def robots(request):
+    response = render(request, 'robots.txt', {})
+    response['Content-Type'] = 'text/plain;'
+    return response
+
 def list(request):
     articles = models.Article.objects.order_by('-id')[:20]
     context = {
