@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1 style="text-align:center;">LetsGarlic</h1>
+  <h1 style="text-align:center;">{{ brand }}</h1>
   {% for article in articles %}
     <div class="article">
       <h3><a href="{% url 'forum:detail' article.id %}">{{ article.subject }}</a></h3>

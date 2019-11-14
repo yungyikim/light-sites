@@ -1,3 +1,5 @@
+
+from django.conf import settings
 from django.shortcuts import render, render_to_response
 from forum import models
 
@@ -22,8 +24,9 @@ def rss(request):
 def list(request):
     articles = models.Article.objects.order_by('-id')[:20]
     context = {
-        'title': 'LetsGarlic - Hot place, Hot spot',
-        'description': 'good restaurant and best restaurant and favorite restaurant, hot place and hot spot',
+        'brand': settings.BRAND,
+        'title': settings.TITLE,
+        'description': settings.DESCRIPTION,
         'articles': articles,
     }
     return render(request, 'list.html', context)

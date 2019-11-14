@@ -23,3 +23,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+BRAND = '브랜드명'
+TITLE = '메인페이지 타이틀'
+DESCRIPTION = '메인페이지의 설명글로 들어가게 됩니다. 사이트에 대한 상세한 설명을 적어주세요'
