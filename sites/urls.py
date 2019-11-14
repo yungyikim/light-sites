@@ -20,6 +20,7 @@ from forum import views
 urlpatterns = [
     path('sitemap.xml', views.sitemap, name="sitemap_xml"),
     path('rss', views.rss, name="rss"),
+    path('robots.txt', views.robots, name="robots"),
     path('admin/', admin.site.urls),
     path('forum/', include('forum.urls')),
     path(r'', views.list, name='home'),
