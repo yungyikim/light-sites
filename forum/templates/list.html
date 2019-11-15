@@ -2,19 +2,29 @@
 {% extends "base.html" %}
 
 {% block styles %}
-  .article { margin: 25px 0; }
-  h3 { margin: 10px 0; color: rgba(0, 0, 0, 0.84); }
-  h3 a { color: rgba(0, 0, 0, 0.84); }
+  .card { display: inline-grid; margin: 15px 17px; width: 320px; padding: 1px; box-shadow: 0 2px 3px rgba(0,0,0,0.15); }
+  .card > .thumbnail { width: 100%; height: 200px; }
+  .card > .card__inner { padding: 15px; }
+  h3 { margin: 10px 0; color: rgba(0, 0, 0, 0.84); font-size: 1em; line-height:1.4; }
+  h3 a { color: rgba(0, 0, 0, 0.84); text-decoration: none; }
   p { margin: 10px 0; line-height: 1.6; color: rgba(0, 0, 0, 0.54); font-weight: 500; }
   img { max-width: 100%; }
+  @media only screen and (max-width: 720px) {
+    .card { margin: 15px 0; width: 100%; }
+  }
 {% endblock %}
 
 {% block content %}
   <h1 style="text-align:center;">{{ brand }}</h1>
   {% for article in articles %}
-    <div class="article">
-      <h3><a href="{% url 'forum:detail' article.id %}">{{ article.subject }}</a></h3>
-      <p>{{ article.description }}</p>
+    <div class="card">
+      <div class="thumbnail" style="background-image: url({{ article.thumbnail }}); background-size: cover; background-position: center;">
+        &nbsp;
+      </div>
+      <div class="card__inner">
+        <h3><a href="{% url 'forum:detail' article.id %}">{{ article.subject }}</a></h3>
+        <p>{{ article.description }}</p>
+      </div>
     </div>
   {% endfor %}
 {% endblock %}
